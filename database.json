@@ -47,14 +47,6 @@
       "avatar": "https://source.unsplash.com/1600x900/?Mazda",
       "price": "3785.71",
       "quantity": 140
-    },
-    {
-      "name": "test",
-      "avatar": "C:\\fakepath\\nissan.jpg",
-      "description": "test",
-      "price": "54865",
-      "quantity": "21",
-      "id": 8
     }
   ]
 }

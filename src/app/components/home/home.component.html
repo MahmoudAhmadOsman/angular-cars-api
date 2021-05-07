@@ -37,13 +37,16 @@
               <tr *ngFor="let product of products">
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
-                <td><img src="{{product.avatar}}" alt="{{product.name}}"></td>
+                <!-- <td><img src="{{product.avatar}}" alt="{{product.name}}"></td> -->
+                <!-- <td><img class="thumbnail-image" src="{{produ.profile_image}}" onerror="this.src='assets/images/nissan.jpg'"  alt="{{product.name}}" /></td> -->
+                <td><img  src="{{product.avatar}}"
+      onerror="this.src='assets/images/has-no-image.png';"  alt="{{product.avatar}}" /></td>
                 <td>{{product.description}}</td>
                 <td>{{product.price | currency}}</td>
                 <td>{{product.quantity}}</td>
                 <td>
                   <a
-                    [routerLink]="['/details', product.id]"
+                    [routerLink]="['/details', product.id, product.name]"
                     class="btn btn-outline-info btn-sm"
                   >
                     <i class="fa fa-eye"></i>

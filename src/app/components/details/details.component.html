@@ -1,11 +1,17 @@
 <section class="product-details">
   <div class="container">
-       <a routerLink="/" class="fa fa-chevron-left mt-3 mb-3" title="Back"> </a>
+    <a routerLink="/" class="fa fa-chevron-left mt-3 mb-3" title="Back"> </a>
     <h1 class="text-info">Product Details</h1>
     <hr />
     <div class="row">
       <div class="col-md-12">
-        <img src="{{productDetails.avatar}}" class="img-fluid" alt="{{productDetails.name}}" />
+        <!-- <img src="{{productDetails.avatar}}" class="img-fluid" alt="{{productDetails.name}}" /> -->
+        <img
+          class="img-fluid"
+          src="{{productDetails.avatar}}"
+          onerror="this.src='assets/images/has-no-image.png';"
+          alt="{{productDetails.avatar}}"
+        />
         <h1><span class="text-danger">{{productDetails.name}}</span></h1>
         <p>{{productDetails.description}}</p>
         <hr />
@@ -19,12 +25,13 @@
           </thead>
           <tbody>
             <tr>
-              <td class="text-danger"> <h5>{{productDetails.price | currency}}</h5> </td>
+              <td class="text-danger">
+                <h5>{{productDetails.price | currency}}</h5>
+              </td>
               <td class="text-danger"><h5>{{productDetails.quantity}}</h5></td>
             </tr>
           </tbody>
         </table>
- 
       </div>
     </div>
   </div>
