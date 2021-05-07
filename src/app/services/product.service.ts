@@ -42,7 +42,7 @@ export class ProductService {
 
   //Get product by id
 
-  getById(id): Observable<Product> {
+  getProductById(id): Observable<Product> {
     return this.httpClient.get<Product>(this.baseUrl + '/products/' + id)
       .pipe(
         catchError(this.errorHandler)
@@ -51,7 +51,7 @@ export class ProductService {
 
 
   //Update Product
-  update(id, product): Observable<Product> {
+  updateProduct(id, product): Observable<Product> {
     return this.httpClient.put<Product>(this.baseUrl + '/products/' + id, JSON.stringify(product), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
