@@ -13,6 +13,7 @@ import { CreateComponent } from './components/create/create.component';
 import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UpdateComponent } from './components/update/update.component';
     CreateComponent,
     DetailsComponent,
     HomeComponent,
-    UpdateComponent
+    UpdateComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
