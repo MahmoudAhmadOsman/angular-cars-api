@@ -10,7 +10,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class ProductService {
 
-  private baseUrl = "http://localhost:5000";
+  // private baseUrl = "http://localhost:5000";
+  private baseUrl = "https://custom-states-api.herokuapp.com";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -24,7 +25,7 @@ export class ProductService {
 
   //Get all Products from
   getAll(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.baseUrl + '/products/')
+    return this.httpClient.get<Product[]>(this.baseUrl + '/cars/')
       .pipe(
         catchError(this.errorHandler)
       )
@@ -32,7 +33,7 @@ export class ProductService {
 
   //Create new product
   create(product): Observable<Product> {
-    return this.httpClient.post<Product>(this.baseUrl + '/products/', JSON.stringify(product), this.httpOptions)
+    return this.httpClient.post<Product>(this.baseUrl + '/cars/', JSON.stringify(product), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -43,7 +44,7 @@ export class ProductService {
   //Get product by id
 
   getProductById(id): Observable<Product> {
-    return this.httpClient.get<Product>(this.baseUrl + '/products/' + id)
+    return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -52,7 +53,7 @@ export class ProductService {
 
   //Update Product
   updateProduct(id, product): Observable<Product> {
-    return this.httpClient.put<Product>(this.baseUrl + '/products/' + id, JSON.stringify(product), this.httpOptions)
+    return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(product), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -60,7 +61,7 @@ export class ProductService {
 
   //Delete Product
   deleteProduct(id: number): Observable<any> {
-    return this.httpClient.delete<Product>(this.baseUrl + '/products/' + id, this.httpOptions)
+    return this.httpClient.delete<Product>(this.baseUrl + '/cars/' + id, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
