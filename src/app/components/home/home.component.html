@@ -1,7 +1,9 @@
 <section class="product_list">
   <div class="container">
     <h1 class="text-danger text-uppercase mt-3">List of Cars</h1>
-    <small class="text-muted" style="float: right; margin-top: -42px;">Built with Angular</small>
+    <small class="text-muted" style="float: right; margin-top: -42px;"
+      >Built with Angular</small
+    >
     <hr />
     <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
       <i class="fa fa-pencil"></i>
@@ -38,8 +40,7 @@
               <tr *ngFor="let product of products">
                 <td>{{product.id}}</td>
                 <td>{{product.name | uppercase}}</td>
-                <!-- <td><img src="{{product.avatar}}" alt="{{product.name}}"></td> -->
-                <!-- <td><img class="thumbnail-image" src="{{produ.profile_image}}" onerror="this.src='assets/images/nissan.jpg'"  alt="{{product.name}}" /></td> -->
+
                 <td>
                   <img
                     src="{{product.avatar}}"
