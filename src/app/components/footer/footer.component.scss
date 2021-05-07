@@ -1,16 +1,22 @@
-.main-footer{
-    width:auto;
-    height:auto;
+.main-footer {
+    width: auto;
+    height: auto;
     position: relative;
-   
-    .copy-right{
+
+    .copy-right {
         background-color: #eee;
         text-align: center;
         padding: 15px 0px;
         position: absolute;
         top: 0;
         left: 0;
-        right: 0; 
-         margin-top:15%;
+        right: 0;
+        margin-top: 15%;
+
+        p {
+            color: #bfb9b9;
+            font-size: 13px;
+            line-height: 46px;
+        }
     }
 }
