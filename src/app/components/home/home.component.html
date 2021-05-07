@@ -1,0 +1,64 @@
+<section class="product_list">
+  <div class="container">
+    <h1 class="text-danger">List of Cars</h1>
+    <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Avatar</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.avatar}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price | currency}}</td>
+                <td>{{product.quantity}}</td>
+                <td>
+                  <a
+                    [routerLink]="['/details', product.id]"
+                    class="btn btn-outline-info btn-sm"
+                  >
+                    <i class="fa fa-eye"></i>
+                  </a>
+                </td>
+
+                <td>
+                  <button
+                    [routerLink]="['/update', product.id]"
+                    class="btn btn-outline-info btn-sm"
+                  >
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm"
+                    (click)="deleteProduct(product.id)"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
