@@ -1,9 +1,23 @@
 <section class="product_list">
   <div class="container">
     <h1 class="text-danger">List of Cars</h1>
+    <hr />
     <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
       <i class="fa fa-pencil"></i>
     </a>
+
+    <!-- Search Bar -->
+
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        placeholder="Search..."
+        id="search"
+      />
+      <br />
+    </div>
+
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive">
@@ -37,8 +51,9 @@
                 </td>
 
                 <td>
+                  <!-- [routerLink]="['/update', product.id]" -->
                   <button
-                    [routerLink]="['/update', product.id]"
+                    (click)="UpdateProduct(product.id)"
                     class="btn btn-outline-info btn-sm"
                   >
                     <i class="fa fa-pencil"></i>

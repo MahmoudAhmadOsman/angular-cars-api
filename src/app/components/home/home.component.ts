@@ -32,15 +32,33 @@ export class HomeComponent implements OnInit {
 
 
 
+  //Go to homepage
+  private getToHome() {
+    this.productService.getAll().subscribe((data) => {
+      this.products = data;
+    });
+  }
+
+
+
+
+  // Update Record
+  UpdateProduct(id: number) {
+    // alert("Update Record "+ id);
+    this.router.navigate(['/update', id]);
+  }
+
+
+
+
 
 //Delete method
   deleteProduct(id: number) {
     confirm("Are you sure, you want to delete this record?");
     this.productService.deleteProduct(id).subscribe((data) => {
-      console.log("Product with ID number is deleted", id);
-      this.products = data;
-      this.router.navigate(['/']);
-
+      console.log("Product is deleted", id);
+      this.getToHome();
+    
     }, (err) => {
       console.log("error occurred when deleting product", err);
     })
@@ -49,7 +67,9 @@ export class HomeComponent implements OnInit {
 
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    
+  }
 
  
 

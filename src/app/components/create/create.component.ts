@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
  
 
 
@@ -12,6 +12,11 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
 
+
+  //Show Success alert on deleted record
+  showSuccessdAlert: boolean = false;
+
+  
   productForm: FormGroup;
 
   ngOnInit(): void {
@@ -32,13 +37,25 @@ export class CreateComponent implements OnInit {
   submitForm() {
 
     this.productService.create(this.productForm.value).subscribe((data) => {
-      console.log('New Product has been created!');
-      this.router.navigate(['/']);
+      console.log('Success!');
+      this.showSuccessdAlert = true;
+      this.hideSuccessAlert();
+      
     })
 
-
-
-
   }
+
+//Show Success when a new record is created
+  hideSuccessAlert() {
+    setTimeout(() => {
+      this.showSuccessdAlert = false;
+      this.router.navigate(['/']);
+    }, 2000);
+  }
+
+
+
+
+
 
 }

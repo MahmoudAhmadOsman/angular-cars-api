@@ -1,15 +1,29 @@
 <section class="create-product">
   <div class="container">
-    <h1>Create Product</h1>
+    <h1 class="text-danger">Add New Car</h1>
+    <hr />
+    <!-- Start of success message -->
+    <div
+      *ngIf="showSuccessdAlert"
+      class="alert alert-success alert-dismissible"
+    >
+      <button type="button" class="close" data-dismiss="alert">
+        &times;
+      </button>
+      <i class="fa fa-check fa-1x"></i>&nbsp; <strong>Success.</strong> A
+      record has been created!
+    </div>
+    <!-- End of success message -->
+
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <form [formGroup]="productForm" (ngSubmit)="submitForm()">
           <div class="form-group">
             <label>Name</label>
             <input
               type="text"
               formControlName="name"
-              class="form-control"
+              class="form-control form-control-lg"
               maxlength="20"
               placeholder="Enter product name"
               required
@@ -30,10 +44,11 @@
           <div class="form-group">
             <label>Description</label>
             <textarea
-              class="form-control"
+              maxlength="20"
+              class="form-control form-control-lg"
               formControlName="description"
-              rows="3"
-              maxlength="50"
+              rows="5"
+              maxlength="250"
               placeholder="Enter description"
               required
             ></textarea>
@@ -43,7 +58,7 @@
             <input
               type="text"
               formControlName="price"
-              class="form-control"
+              class="form-control form-control-lg"
               placeholder="Enter price tag"
               required
             />
@@ -53,7 +68,7 @@
             <input
               type="text"
               formControlName="quantity"
-              class="form-control"
+              class="form-control form-control-lg"
               placeholder="Enter quantity number"
               required
             />

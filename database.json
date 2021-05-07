@@ -50,12 +50,20 @@
       "quantity": 41
     },
     {
-      "name": "Alow",
-      "avatar": "C:\\fakepath\\nissan.jpg",
-      "description": "alow",
-      "price": "65326",
-      "quantity": "888",
+      "name": "test",
+      "avatar": "",
+      "description": "test",
+      "price": "664",
+      "quantity": "43",
       "id": 9
+    },
+    {
+      "name": "dfdfd",
+      "avatar": "",
+      "description": "dfdfd",
+      "price": "5554",
+      "quantity": "3",
+      "id": 10
     }
   ]
 }
