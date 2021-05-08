@@ -1,13 +1,19 @@
 .product_list {
     position: relative;
 
-    input#search{
+    input#search {
         border-radius: 50px;
     }
-    img{
+
+    img {
         width: 50px;
         height: 50px;
         border-radius: 50px;
         object-fit: cover;
+    }
+
+    .btn-outline-info,
+    .btn-outline-danger {
+        border-radius: 50px;
     }
 }
