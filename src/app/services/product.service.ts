@@ -35,7 +35,7 @@ export class ProductService {
   }
 
   //Create new product
-  create(product): Observable<Product> {
+  createNewProduct(product): Observable<Product> {
     return this.httpClient.post<Product>(this.baseUrl + '/cars/', JSON.stringify(product), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)

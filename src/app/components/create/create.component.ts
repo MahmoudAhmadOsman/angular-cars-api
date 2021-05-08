@@ -78,7 +78,7 @@ export class CreateComponent implements OnInit {
   //On form submit
   submitForm() {
 
-    this.productService.create(this.productForm.value).subscribe((data) => {
+    this.productService.createNewProduct(this.productForm.value).subscribe((data) => {
       console.log(data);
 
       this.toastr.success('Created Successfully!');
