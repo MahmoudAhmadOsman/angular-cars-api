@@ -2,10 +2,11 @@
   <div class="container">
     <h1 class="text-info">{{title}}</h1>
     <hr />
+
     <div class="row">
       <div class="col-md-12">
-          <!-- [formGroup]="productForm" -->
-        <form  (ngSubmit)="onSubmit()">
+        <!-- [formGroup]="productForm" (ngSubmit)="onSubmit()" -->
+        <form>
           <div class="form-group">
             <label>Name</label>
             <input
@@ -16,7 +17,6 @@
               placeholder="Enter product name"
               required
             />
-            
           </div>
           <!-- Image -->
 
@@ -62,7 +62,7 @@
               required
             />
           </div>
-          <button type="submit" class="btn btn-info mt-3">Submit</button>
+          <button type="submit" class="btn btn-info mt-3">Update</button>
         </form>
       </div>
     </div>

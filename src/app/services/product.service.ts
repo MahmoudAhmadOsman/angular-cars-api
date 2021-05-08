@@ -11,7 +11,8 @@ import { catchError } from 'rxjs/operators';
 export class ProductService {
 
   // private baseUrl = "http://localhost:5000";
-  private baseUrl = "https://custom-states-api.herokuapp.com";
+  // https://custom-states-api.herokuapp.com
+  private baseUrl = " https://custom-states-api.herokuapp.com";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -52,12 +53,28 @@ export class ProductService {
 
 
   //Update Product
-  updateProduct(id, product): Observable<Product> {
-    return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(product), this.httpOptions)
-      .pipe(
-        catchError(this.errorHandler)
-      )
+  // updateProduct(id, product): Observable<Product> {
+  //   return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(product), this.httpOptions)
+  //     .pipe(
+  //       catchError(this.errorHandler)
+  //     )
+  // }
+
+//New update method
+  // getCurrentData(id)  {
+  //   return this.httpClient.get(`${this.baseUrl}/${id}`)
+  // }
+
+
+  //Last
+  getCurrentData(id): Observable<Product> {
+    return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id).pipe(
+      catchError(this.errorHandler)
+    )
+    
   }
+
+
 
   //Delete Product
   deleteProduct(id: number): Observable<any> {
@@ -66,6 +83,12 @@ export class ProductService {
         catchError(this.errorHandler)
       )
   }
+
+
+
+
+
+
   //Error Handler
   errorHandler(error) {
     let errorMessage = '';

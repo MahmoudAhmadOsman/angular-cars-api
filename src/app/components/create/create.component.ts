@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators   } from '@angular/forms';
  
 
 
@@ -17,22 +17,73 @@ export class CreateComponent implements OnInit {
   showSuccessdAlert: boolean = false;
 
   
+  //Add this in the create.component.html file
   productForm: FormGroup;
 
-  ngOnInit(): void {
-    this.productForm = this.fb.group({
-      name: [''],
-      avatar: [''],
-      description: [''],
-      price: [''],
-      quantity: [''],
-    })
-    //console.log(this.productForm)
-    console.log("Form ITEMS: ", this.productForm.value);
+  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService) {
+
+    let formControls = {
+      name: new FormControl("", [
+        Validators.required,
+        Validators.pattern("[A-Za-z .'-]+"),
+        Validators.minLength(2)
+      ]),
+      avatar: new FormControl("", [
+        Validators.required,
+       
+      ]),
+      description: new FormControl("", [
+        Validators.required,
+
+      ]),
+      price: new FormControl("", [
+        Validators.required,
+
+      ]),
+      quantity: new FormControl("", [
+        Validators.required,
+
+      ]),
+    }
+
+    this.productForm = this.fb.group(formControls);
+
+  }
+  
+  get name() {
+    return this.productForm.get("name");
+  }
+  get description() {
+    return this.productForm.get("description");
   }
 
-  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService) { }
+  get price() {
+    return this.productForm.get("price");
+  }
+  get quantity() {
+    return this.productForm.get("quantity");
+  }
 
+  ngOnInit(): void {
+    // this.productForm = this.fb.group({
+    //   name: new FormControl("", [
+    //     Validators.required,
+    //     Validators.pattern("[A-Za-z .'-]+"),
+    //     Validators.minLength(20)
+    //   ]),
+    //   avatar: new FormControl(""),
+    //   description: new FormControl(""),
+    //   price: new FormControl(""),
+    //   quantity: new FormControl(""),
+
+
+
+    // })
+     
+    // console.log("Form ITEMS: ", this.productForm.value);
+  }
+
+ 
   //On form submit
   submitForm() {
 

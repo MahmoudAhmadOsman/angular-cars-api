@@ -1,13 +1,5 @@
 {
-  "products": [
-    {
-      "id": 2,
-      "name": "Hyundai",
-      "description": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-      "avatar": "https://source.unsplash.com/1600x900/?Hyundai",
-      "price": "3239.39",
-      "quantity": 3
-    },
+  "cars": [
     {
       "id": 3,
       "name": "Porsche",

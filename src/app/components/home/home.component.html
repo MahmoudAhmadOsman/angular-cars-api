@@ -37,9 +37,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let product of products">
-                <td>{{product.id}}</td>
-                <td>{{product.name | uppercase}}</td>
+              <tr *ngFor="let product of products; let i = index;">
+                <td>{{i + 1}}</td>
+                <td>{{product.name | titlecase}}</td>
 
                 <td>
                   <img
@@ -55,19 +55,22 @@
                   <a
                     [routerLink]="['/details', product.id, product.name]"
                     class="btn btn-outline-info btn-sm"
+                    title="View"
                   >
                     <i class="fa fa-eye"></i>
                   </a>
                 </td>
 
                 <td>
+                  <!-- (click)="UpdateProduct(product.id)" -->
                   <!-- [routerLink]="['/update', product.id]" -->
-                  <button
-                    (click)="UpdateProduct(product.id)"
+                  <a
+                    routerLink="/update/{{product.id}}"
                     class="btn btn-outline-info btn-sm"
+                    title="Edit"
                   >
                     <i class="fa fa-pencil"></i>
-                  </button>
+                  </a>
                 </td>
 
                 <td>
@@ -75,6 +78,7 @@
                     type="button"
                     class="btn btn-outline-danger btn-sm"
                     (click)="deleteProduct(product.id)"
+                    title="Delete"
                   >
                     <i class="fa fa-trash"></i>
                   </button>
