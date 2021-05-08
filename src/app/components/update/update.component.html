@@ -2,7 +2,6 @@
   <div class="container">
     <h1 class="text-danger mt-3">{{title}}</h1>
     <hr />
- 
 
     <div class="row">
       <div class="col-md-12">
@@ -10,7 +9,6 @@
           <div class="form-group">
             <label for="id">Name</label>
 
-             {{ productDetails |json }}
             <input
               type="text"
               formControlName="name"
@@ -18,7 +16,6 @@
               class="form-control form-control-lg"
               placeholder="Enter product name"
               required
-             
             />
 
             <!-- Name-->
@@ -91,7 +88,7 @@
             <!-- Quantity -->
             <div *ngIf="quantity.touched && quantity.invalid">
               <span *ngIf="quantity.errors.required" class="text-danger"
-                >Product  quantity is required!<br
+                >Product quantity is required!<br
               /></span>
             </div>
           </div>
