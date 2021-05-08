@@ -26,7 +26,6 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
 
-
   //Get all Products from
   getAll(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.baseUrl + '/cars/')
@@ -43,17 +42,6 @@ export class ProductService {
       )
 
   }
-
-
-  //Get product by id
-
-  // getProductById(id): Observable<Product> {
-  //   return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id)
-  //     .pipe(
-  //       catchError(this.errorHandler)
-  //     )
-  // }
-
 
   //Last -best
   getProductById(id: number): Observable<Product> {
@@ -72,28 +60,6 @@ export class ProductService {
       )
   }
 
-//New update method
-  // getCurrentData(id)  {
-  //   return this.httpClient.get(`${this.baseUrl}/${id}`)
-  // }
-
-
-  //Last
-  // getCurrentData(id): Observable<Product> {
-  //   return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id).pipe(
-  //     catchError(this.errorHandler)
-  //   )
-    
-  // }
-
-
-
-
-
-  // updateUser(product: Product) {
-  //   return this.httpClient.post<any>(this.baseUrl, product);
-  // }
-
 
   //Delete Product
   deleteProduct(id: number): Observable<any> {
@@ -102,11 +68,6 @@ export class ProductService {
         catchError(this.errorHandler)
       )
   }
-
-
-
-
-
 
   //Error Handler
   errorHandler(error) {
