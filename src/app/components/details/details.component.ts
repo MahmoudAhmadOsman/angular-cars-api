@@ -13,10 +13,10 @@ export class DetailsComponent implements OnInit {
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.showUserDetails();
+    this.showProductDetails();
   }
 
-  showUserDetails() {
+  showProductDetails() {
     console.log("Product Details: ", this.route.snapshot.params['id']);
     const id = this.route.snapshot.params['id'];
     this.productService.getProductById(id).subscribe((data) => {
