@@ -8,7 +8,7 @@
       <div class="col-md-12">
         <form [formGroup]="productForm" (ngSubmit)="submitForm()">
           <div class="form-group">
-            <label for="id">Name</label>
+            <label for="name">Name</label>
             <input
               type="text"
               formControlName="name"
@@ -31,11 +31,12 @@
           <!-- Image -->
 
           <div class="form-group">
-            <label>Avatar</label>
+            <label for="avatar">Avatar</label>
             <input
               type="file"
               formControlName="avatar"
               class="form-control"
+              id="avatar"
               required
             />
           </div>
@@ -49,6 +50,7 @@
               rows="5"
               maxlength="250"
               placeholder="Enter description"
+              id="description"
               required
             ></textarea>
             <!-- description -->
