@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../models/product';
 
@@ -16,35 +16,31 @@ export class HomeComponent implements OnInit {
 
    products: Product[];
 
+  public loading = true;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, private toastr: ToastrService) {
 
     productService.getAll().subscribe((data) => {
-      console.log("List of all products", data);
+      console.log("Products list", data);
 
       this.products = data;
+      this.loading = false;
 
     }, (error) => {
-      console.log("An error occurred while fetching data: ", error)
+      console.log("An error occurred: ", error)
+      this.toastr.error('An error occurred while fetching data:');
+      this.loading = true;
     })
 
   }
 
-
-
-  //Go to homepage
-  private getToHome() {
-    this.productService.getAll().subscribe((data) => {
-      this.products = data;
-    });
+  ngOnInit(): void {
+     
   }
-
-
-
+  
 
   // Update Record
   UpdateProduct(id: number) {
-    // alert("Update Record "+ id);
     this.router.navigate(['/update', id]);
   }
 
@@ -56,20 +52,19 @@ export class HomeComponent implements OnInit {
   deleteProduct(id: number) {
     confirm("Are you sure, you want to delete this record?");
     this.productService.deleteProduct(id).subscribe((data) => {
-      console.log("Product is deleted", id);
-      this.getToHome();
+     
+      this.toastr.error('Record is deleted!');
+       this.router.navigate(['/'])
     
     }, (err) => {
-      console.log("error occurred when deleting product", err);
+      console.log("error occurred when deleting product", err.status);
     })
 
   }
 
 
 
-  ngOnInit(): void {
-    
-  }
+
 
  
 

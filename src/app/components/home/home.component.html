@@ -1,93 +1,103 @@
 <section class="product_list">
   <div class="container">
-    <h1 class="text-danger text-uppercase mt-3">List of Cars</h1>
-    <small class="text-muted" style="float: right; margin-top: -42px;"
-      >Built with Angular</small
-    >
-    <hr />
-    <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
-      <i class="fa fa-pencil"></i>
-    </a>
-
-    <!-- Search Bar -->
-
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control form-control-lg"
-        placeholder="Search..."
-        id="search"
-      />
-      <br />
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Avatar</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let product of products; let i = index;">
-                <td>{{i + 1}}</td>
-                <td>{{product.name | titlecase}}</td>
-
-                <td>
-                  <img
-                    src="{{product.avatar}}"
-                    onerror="this.src='assets/images/has-no-image.png';"
-                    alt="{{product.avatar}}"
-                  />
-                </td>
-                <td>{{product.description}}</td>
-                <td>{{product.price | currency}}</td>
-                <td>{{product.quantity}}</td>
-                <td>
-                  <a
-                    [routerLink]="['/details', product.id, product.name]"
-                    class="btn btn-outline-info btn-sm"
-                    title="View"
-                  >
-                    <i class="fa fa-eye"></i>
-                  </a>
-                </td>
-
-                <td>
-                  <!-- (click)="UpdateProduct(product.id)" -->
-                  <!-- [routerLink]="['/update', product.id]" -->
-                  <a
-                    routerLink="/update/{{product.id}}"
-                    class="btn btn-outline-info btn-sm"
-                    title="Edit"
-                  >
-                    <i class="fa fa-pencil"></i>
-                  </a>
-                </td>
-
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    (click)="deleteProduct(product.id)"
-                    title="Delete"
-                  >
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <!-- Start of loading -->
+    <div class="row" *ngIf="loading  else loaded">
+      <div class="col-md-3 mx-auto mt-5">
+        <i class="fa fa-spinner fa-spin fa-5x"></i>
       </div>
     </div>
+    <!-- End of loading -->
+
+    <ng-template #loaded>
+      <h1 class="text-danger text-uppercase mt-3">List of Cars</h1>
+      <small class="text-muted" style="float: right; margin-top: -42px;"
+        >Built with Angular</small
+      >
+      <hr />
+      <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
+        <i class="fa fa-pencil"></i>
+      </a>
+
+      <!-- Search Bar -->
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          placeholder="Search..."
+          id="search"
+        />
+        <br />
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Avatar</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products; let i = index;">
+                  <td>{{i + 1}}</td>
+                  <td>{{product.name | titlecase}}</td>
+
+                  <td>
+                    <img
+                      src="{{product.avatar}}"
+                      onerror="this.src='assets/images/has-no-image.png';"
+                      alt="{{product.avatar}}"
+                    />
+                  </td>
+                  <td>{{product.description}}</td>
+                  <td>{{product.price | currency}}</td>
+                  <td>{{product.quantity}}</td>
+                  <td>
+                    <a
+                      [routerLink]="['/details', product.id, product.name]"
+                      class="btn btn-outline-info btn-sm"
+                      title="View"
+                    >
+                      <i class="fa fa-eye"></i>
+                    </a>
+                  </td>
+
+                  <td>
+                    <!-- (click)="UpdateProduct(product.id)" -->
+                    <!-- [routerLink]="['/update', product.id]" -->
+                    <a
+                      routerLink="/update/{{product.id}}"
+                      class="btn btn-outline-info btn-sm"
+                      title="Edit"
+                    >
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                  </td>
+
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger btn-sm"
+                      (click)="deleteProduct(product.id)"
+                      title="Delete"
+                    >
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </section>

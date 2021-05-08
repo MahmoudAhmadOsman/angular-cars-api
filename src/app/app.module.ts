@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastNoAnimationModule.forRoot(),//Toast notification
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 import { FormBuilder, FormGroup, FormControl, Validators   } from '@angular/forms';
  
 
@@ -14,13 +16,13 @@ export class CreateComponent implements OnInit {
 
 
   //Show Success alert on deleted record
-  showSuccessdAlert: boolean = false;
+  // showSuccessdAlert: boolean = false;
 
   
   //Add this in the create.component.html file
   productForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService) {
+  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService, private toastr: ToastrService) {
 
     let formControls = {
       name: new FormControl("", [
@@ -77,25 +79,19 @@ export class CreateComponent implements OnInit {
   submitForm() {
 
     this.productService.create(this.productForm.value).subscribe((data) => {
-      console.log('Success!');
-      this.showSuccessdAlert = true;
-      this.hideSuccessAlert();
+      console.log(data);
+
+      this.toastr.success('Created Successfully!');
+      this.router.navigate(['/'])
       
+    }, (error) => {
+      console.log('status code -> ' + error.status);
+
+      this.toastr.error('Unable to create new record!');
     })
 
   }
 
-//Show Success when a new record is created
-  hideSuccessAlert() {
-    setTimeout(() => {
-      this.showSuccessdAlert = false;
-      this.router.navigate(['/']);
-    }, 2000);
-  }
-
-
-
-
-
+ 
 
 }
