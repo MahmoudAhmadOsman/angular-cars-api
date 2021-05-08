@@ -1,5 +1,5 @@
 import { ProductService } from './../../services/product.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Product } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
  
@@ -14,91 +14,94 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateComponent implements OnInit {
 
   public title: string = "Update Record";
-  //id: number;
-  // products: Product = new Product();
+  public productDetails: any;
+  //Add this in the update.component.html file
+  updateProductForm: FormGroup;
 
-   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService, private route: ActivatedRoute,) {
+
+    let formControls = {
+      name: new FormControl("", [
+        Validators.required,
+        Validators.pattern("[A-Za-z .'-]+"),
+        Validators.minLength(2)
+      ]),
+      avatar: new FormControl("", [
+        Validators.required,
+
+      ]),
+      description: new FormControl("", [
+        Validators.required,
+
+      ]),
+      price: new FormControl("", [
+        Validators.required,
+
+      ]),
+      quantity: new FormControl("", [
+        Validators.required,
+
+      ]),
+    }
+
+    this.updateProductForm = this.fb.group(formControls);
+
+  }
+
+  get name() {
+    return this.updateProductForm.get("name");
+  }
+  get avatar() {
+    return this.updateProductForm.get("avatar");
+  }
+  get description() {
+    return this.updateProductForm.get("description");
+  }
+
+  get price() {
+    return this.updateProductForm.get("price");
+  }
+  get quantity() {
+    return this.updateProductForm.get("quantity");
+  }
 
 
-  updateUserForm = new FormGroup({
-    name: new FormControl(''),
-    avatar: new FormControl(''),
-    description: new FormControl(''),
-    price: new FormControl(''),
-    quantity: new FormControl(''),
-
-  })
 
 
- 
- 
+//Edit - Display values in edit form
   ngOnInit(): void {
-    this.updateProductFunc();
-}
+    let id = this.route.snapshot.params.id;
+    console.log(this.route.snapshot.params.id)
 
-  updateProductFunc() {
-   let id = this.route.snapshot.params['id'];
-    this.productService.getCurrentData(id).subscribe(data => {
-     console.log("Update product id: ", this.route.snapshot.params.id);
-      
-      this.updateUserForm = new FormGroup({
-        name: new FormControl(data['name']),
-        avatar: new FormControl(data['avatar']),
-        description: new FormControl(data['description']),
-        price: new FormControl(data['price']),
-        quantity: new FormControl(data['quantity']),
-
-      })
-    }, (err) => {
-      console.log("Cannot update record",err);
-    })
-}
-
-
-  // ngOnInit(): void {
-
-  //   this.id = this.route.snapshot.params['id'];
-  //   this.productService.getProductById(this.id).subscribe(data => {
-  //     this.products = data;
-
-  //   }, errror => console.log("Unable to get product by id ", errror))
-
-  // }
-
+    this.productService.getProductById(id).subscribe((data) => {
+      let product = data;
+      console.log(product);
+      this.updateProductForm.patchValue({
+        name: product.name,
+        // avatar: product.avatar,
+        description: product.description,
+        price: product.price,
+        quantity: product.quantity
 
   
+      })
+  
+    }, (err) => {
+      console.log("Unable to display product", err)
+})
 
-  // onSubmit() {
-  //   this.productService.updateProduct(this.id, this.products).subscribe(data => {
-      
-  //     this.router.navigate(["/"]);
+ 
+  
+  }
 
-  //   }, error => console.log("Error while updating! ", error));
-
-  //  }
-
-
-
-
+ 
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 }

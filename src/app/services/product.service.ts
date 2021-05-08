@@ -9,10 +9,13 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
+  // updateUser(user: Product) {
+  //   throw new Error('Method not implemented.');
+  // }
 
   // private baseUrl = "http://localhost:5000";
   // https://custom-states-api.herokuapp.com
-  private baseUrl = " https://custom-states-api.herokuapp.com";
+  private baseUrl = "https://custom-states-api.herokuapp.com";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -44,7 +47,16 @@ export class ProductService {
 
   //Get product by id
 
-  getProductById(id): Observable<Product> {
+  // getProductById(id): Observable<Product> {
+  //   return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id)
+  //     .pipe(
+  //       catchError(this.errorHandler)
+  //     )
+  // }
+
+
+  //Last -best
+  getProductById(id: number): Observable<Product> {
     return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id)
       .pipe(
         catchError(this.errorHandler)
@@ -53,12 +65,12 @@ export class ProductService {
 
 
   //Update Product
-  // updateProduct(id, product): Observable<Product> {
-  //   return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(product), this.httpOptions)
-  //     .pipe(
-  //       catchError(this.errorHandler)
-  //     )
-  // }
+  updateProduct(id, product): Observable<Product> {
+    return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(product), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
 
 //New update method
   // getCurrentData(id)  {
@@ -67,13 +79,20 @@ export class ProductService {
 
 
   //Last
-  getCurrentData(id): Observable<Product> {
-    return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id).pipe(
-      catchError(this.errorHandler)
-    )
+  // getCurrentData(id): Observable<Product> {
+  //   return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id).pipe(
+  //     catchError(this.errorHandler)
+  //   )
     
-  }
+  // }
 
+
+
+
+
+  // updateUser(product: Product) {
+  //   return this.httpClient.post<any>(this.baseUrl, product);
+  // }
 
 
   //Delete Product

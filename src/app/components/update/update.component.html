@@ -1,22 +1,35 @@
-<div class="product_update">
+<section class="product_update">
   <div class="container">
-    <h1 class="text-info">{{title}}</h1>
+    <h1 class="text-danger mt-3">{{title}}</h1>
     <hr />
+ 
 
     <div class="row">
       <div class="col-md-12">
-        <!-- [formGroup]="productForm" (ngSubmit)="onSubmit()" -->
-        <form>
+        <form [formGroup]="updateProductForm">
           <div class="form-group">
-            <label>Name</label>
+            <label for="id">Name</label>
+
+             {{ productDetails |json }}
             <input
               type="text"
               formControlName="name"
+              id="name"
               class="form-control form-control-lg"
-              maxlength="20"
               placeholder="Enter product name"
               required
+             
             />
+
+            <!-- Name-->
+            <div *ngIf="name.touched && name.invalid">
+              <span *ngIf="name.errors.required" class="text-danger"
+                >Product Name is required!<br
+              /></span>
+              <span *ngIf="name.errors.minlength" class="text-danger"
+                >Name must contain at least 2 or more characters!<br
+              /></span>
+            </div>
           </div>
           <!-- Image -->
 
@@ -31,7 +44,7 @@
           </div>
 
           <div class="form-group">
-            <label>Description</label>
+            <label for="description">Description</label>
             <textarea
               maxlength="20"
               class="form-control form-control-lg"
@@ -41,30 +54,56 @@
               placeholder="Enter description"
               required
             ></textarea>
+            <!-- description -->
+            <div *ngIf="description.touched && description.invalid">
+              <span *ngIf="description.errors.required" class="text-danger"
+                >Product description is required!<br
+              /></span>
+            </div>
           </div>
           <div class="form-group">
-            <label>Price</label>
+            <label for="price">Price</label>
             <input
               type="text"
               formControlName="price"
               class="form-control form-control-lg"
               placeholder="Enter price tag"
+              id="price"
               required
             />
+            <!-- Price -->
+            <div *ngIf="price.touched && price.invalid">
+              <span *ngIf="price.errors.required" class="text-danger"
+                >Product price is required!<br
+              /></span>
+            </div>
           </div>
           <div class="form-group">
-            <label>Quantity</label>
+            <label for="quantity">Quantity</label>
             <input
               type="text"
               formControlName="quantity"
               class="form-control form-control-lg"
               placeholder="Enter quantity number"
+              id="quantity"
               required
             />
+            <!-- Quantity -->
+            <div *ngIf="quantity.touched && quantity.invalid">
+              <span *ngIf="quantity.errors.required" class="text-danger"
+                >Product  quantity is required!<br
+              /></span>
+            </div>
           </div>
-          <button type="submit" class="btn btn-info mt-3">Update</button>
+          <button
+            type="submit"
+            class="btn btn-info text-uppercase mt-3"
+            [disabled]="updateProductForm.invalid"
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>
   </div>
-</div>
+</section>

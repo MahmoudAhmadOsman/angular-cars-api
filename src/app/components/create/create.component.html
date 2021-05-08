@@ -1,6 +1,6 @@
 <section class="create-product">
   <div class="container">
-    <h1 class="text-danger">Add New Car</h1>
+    <h1 class="text-danger mt-3">Add New Car</h1>
     <hr />
     <!-- Start of success message -->
     <div
@@ -25,18 +25,19 @@
               formControlName="name"
               id="name"
               class="form-control form-control-lg"
-              maxlength="2"
               placeholder="Enter product name"
               required
             />
 
-            <!-- Start of validation -->
-            <div *ngIf="name.touched">
+            <!-- Name-->
+            <div *ngIf="name.touched && name.invalid">
               <span *ngIf="name.errors.required" class="text-danger"
-                >Name is required!<br
+                >Product Name is required!<br
+              /></span>
+              <span *ngIf="name.errors.minlength" class="text-danger"
+                >Name must contain at least 2 or more characters!<br
               /></span>
             </div>
-            <!-- End of validation -->
           </div>
           <!-- Image -->
 
@@ -62,9 +63,9 @@
               required
             ></textarea>
             <!-- description -->
-            <div *ngIf="description.touched">
+            <div *ngIf="description.touched && description.invalid">
               <span *ngIf="description.errors.required" class="text-danger"
-                >Description is required!<br
+                >Product description is required!<br
               /></span>
             </div>
           </div>
@@ -79,9 +80,9 @@
               required
             />
             <!-- Price -->
-            <div *ngIf="price.touched">
+            <div *ngIf="price.touched && price.invalid">
               <span *ngIf="price.errors.required" class="text-danger"
-                >Price is required!<br
+                >Product price is required!<br
               /></span>
             </div>
           </div>
@@ -96,15 +97,15 @@
               required
             />
             <!-- Quantity -->
-            <div *ngIf="quantity.touched">
+            <div *ngIf="quantity.touched && quantity.invalid">
               <span *ngIf="quantity.errors.required" class="text-danger"
-                >Quantity is required!<br
+                >Product  quantity is required!<br
               /></span>
             </div>
           </div>
           <button
             type="submit"
-            class="btn btn-info mt-3"
+            class="btn btn-info text-uppercase mt-3"
             [disabled]="productForm.invalid"
           >
             Submit

@@ -46,12 +46,16 @@ export class CreateComponent implements OnInit {
       ]),
     }
 
+    // console.log("Create form Items: ", this.productForm.value);
     this.productForm = this.fb.group(formControls);
 
   }
   
   get name() {
     return this.productForm.get("name");
+  }
+  get avatar() {
+    return this.productForm.get("avatar");
   }
   get description() {
     return this.productForm.get("description");
@@ -65,22 +69,7 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.productForm = this.fb.group({
-    //   name: new FormControl("", [
-    //     Validators.required,
-    //     Validators.pattern("[A-Za-z .'-]+"),
-    //     Validators.minLength(20)
-    //   ]),
-    //   avatar: new FormControl(""),
-    //   description: new FormControl(""),
-    //   price: new FormControl(""),
-    //   quantity: new FormControl(""),
-
-
-
-    // })
-     
-    // console.log("Form ITEMS: ", this.productForm.value);
+  
   }
 
  
