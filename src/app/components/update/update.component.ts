@@ -1,4 +1,4 @@
-import { ProductService } from './../../services/product.service';
+import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Product } from './../../models/product';
@@ -17,10 +17,6 @@ export class UpdateComponent implements OnInit {
 
   public title: string = "Update Record";
   public productDetails: any;
-
-
-   id: number;
-  // product: Product = new Product();
 
   //Add this in the update.component.html file
   updateProductForm: FormGroup;
@@ -100,34 +96,27 @@ export class UpdateComponent implements OnInit {
       console.log("Unable to display product", err)
     })
 
-
-
-
-
   }
 
-
-
-
-
-
-  //New
   updateProduct() {
-    
-     let id = this.route.snapshot.params['id'];
-    this.productService.updateProduct(id).subscribe(data => {
-       console.log("component ts file", id)
-      this.router.navigate(["/"]);
+    let data = this.updateProductForm.value;
+    let id = this.route.snapshot.params.id;
+    // let product = new Product(data.name, data.avatar, data.description, data.price, data.quantity, id);
+    let product = new Product();
 
-    },
-      (error => {
-        console.log("Unable to updating product! ", error);
+    this.productService.updateProduct(id).subscribe(
+      res => {
+        this.toastr.warning(res.message);
+        this.router.navigate(['/']);
+      },
+      err => {
+        console.log(err);
         this.toastr.error("Sorry, Unable to update this product");
-      })
-
-    );
+      }
+    )
 
   }
+
 
 
 

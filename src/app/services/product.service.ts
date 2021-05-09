@@ -12,7 +12,7 @@ export class ProductService {
 
   // private baseUrl = "http://localhost:5000";
   // https://custom-states-api.herokuapp.com
-  baseUrl = "https://custom-states-api.herokuapp.com";
+  private baseUrl = " https://custom-states-api.herokuapp.com";
 
 
   httpOptions = {
@@ -60,16 +60,19 @@ export class ProductService {
 
 
   //Update Product ----new
+  // updateProduct(id: number, product): Observable<any> {
+  //   // return this.httpClient.put<Product>(this.baseUrl, + '/cars/' + id )
+  //   return this.httpClient.put(this.baseUrl + '/cars/' + id, product)
+  //     .pipe(
+  //       catchError(this.errorHandler)
+  //     )
+
+  // }
+
+
   updateProduct(id: number) {
-    // return this.httpClient.put<Product>(this.baseUrl, + '/cars/' + id, product, )
-    return this.httpClient.put(this.baseUrl + '/cars/' + id, JSON.stringify(id), this.httpOptions)
-      .pipe(
-        catchError(this.errorHandler)
-      )
-
+    return this.httpClient.put<any>(this.baseUrl, id);
   }
-
-  // this.baseUrl + '/cars/', JSON.stringify(id), this.httpOptions
 
 
 

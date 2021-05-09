@@ -41,6 +41,13 @@
             />
           </div>
 
+            <div *ngIf="avatar.touched && avatar.invalid">
+              <span *ngIf="avatar.errors.required" class="text-danger"
+                >Product image is required!<br
+              /></span>
+             
+            </div>
+
           <div class="form-group">
             <label for="description">Description</label>
             <textarea
