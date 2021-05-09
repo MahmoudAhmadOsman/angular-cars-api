@@ -13,8 +13,14 @@ import { Product } from './../../models/product';
 })
 export class HomeComponent implements OnInit {
 
+  popoverTitle = 'DELETE THIS RECORD';
+  popoverMessage = 'Are you sure you want to delete this record?';
+  confirmClicked = false;
+  cancelClicked = false;
 
-   products: Product[];
+
+
+  products: Product[];
 
   public loading = true;
 
@@ -35,9 +41,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     
+
   }
-  
+
 
   // Update Record
   UpdateProduct(id: number) {
@@ -48,24 +54,28 @@ export class HomeComponent implements OnInit {
 
 
 
-//Delete method
+  //Delete method
   deleteProduct(id: number) {
-    confirm("Are you sure, you want to delete this record?");
+  // confirm("Are you sure, you want to delete this record?");
+ 
     this.productService.deleteProduct(id).subscribe((data) => {
-     
+
       this.toastr.error('Record has been deleted!');
-       this.router.navigate(['/'])
-    
+      // window.location.reload();
+      this.router.navigate(['/'])
+
     }, (err) => {
       console.log("error occurred when deleting product", err.status);
+      this.toastr.error('Unable to delete this record!');
     })
 
   }
 
-
-
-
-
  
+
+
+
+
+
 
 }

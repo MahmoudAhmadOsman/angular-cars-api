@@ -60,21 +60,20 @@ export class ProductService {
 
 
   //Update Product ----new
-  // updateProduct(id: number, product): Observable<any> {
-  //   // return this.httpClient.put<Product>(this.baseUrl, + '/cars/' + id )
-  //   return this.httpClient.put(this.baseUrl + '/cars/' + id, product)
-  //     .pipe(
-  //       catchError(this.errorHandler)
-  //     )
-
-  // }
+  updateProduct(product: Product): Observable<any> {
+    // return this.httpClient.put<Product>(this.baseUrl, + '/cars/' + id )
+    return this.httpClient.put(this.baseUrl + '/cars/', product)
 
 
-  updateProduct(id: number) {
-    return this.httpClient.put<any>(this.baseUrl, id);
   }
 
 
+
+
+
+  // updateProduct(id:number, product): Observable<any> {
+  //   return this.httpClient.put(`${this.baseUrl}/${id}`, product);
+  // }
 
 
 

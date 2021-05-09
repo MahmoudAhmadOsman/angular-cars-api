@@ -42,7 +42,10 @@
                   <th>Description</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th>Actions</th>
+                  <th>View</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+
                 </tr>
               </thead>
               <tbody>
@@ -57,7 +60,7 @@
                       alt="{{product.avatar}}"
                     />
                   </td>
-                  <td>{{product.description}}</td>
+                  <td>{{product.description | descShortner:20}}...</td>
                   <td>{{product.price | currency}}</td>
                   <td>{{product.quantity}}</td>
                   <td>
@@ -84,11 +87,19 @@
                   </td>
 
                   <td>
+                    <!--  (click)="deleteProduct(product.id)" -->
                     <button
                       type="button"
                       class="btn btn-outline-danger btn-sm"
-                      (click)="deleteProduct(product.id)"
+                      
+                       
                       title="Delete"
+                      mwlConfirmationPopover
+                      [popoverTitle]="popoverTitle"
+                      [popoverMessage]="popoverMessage"
+                      placement="left"
+                      (confirm)="deleteProduct(product.id)"
+                      (cancel)="cancelClicked = true"
                     >
                       <i class="fa fa-trash"></i>
                     </button>

@@ -81,7 +81,7 @@ export class UpdateComponent implements OnInit {
 
     this.productService.getProductById(id).subscribe((data) => {
       let product = data;
-      // console.log(product);
+       console.log(product);
       this.updateProductForm.patchValue({
         name: product.name,
         // avatar: product.avatar,
@@ -101,12 +101,12 @@ export class UpdateComponent implements OnInit {
   updateProduct() {
     let data = this.updateProductForm.value;
     let id = this.route.snapshot.params.id;
-    // let product = new Product(data.name, data.avatar, data.description, data.price, data.quantity, id);
+    //let product = new Product(data.name, data.avatar, data.description, data.price, data.quantity, id);
     let product = new Product();
 
     this.productService.updateProduct(id).subscribe(
       res => {
-        this.toastr.warning(res.message);
+        this.toastr.success("Updated record successfully!");
         this.router.navigate(['/']);
       },
       err => {

@@ -37,8 +37,11 @@
               formControlName="avatar"
               class="form-control"
               id="avatar"
+              name="avatar"
               required
+              
             />
+   
           </div>
 
             <div *ngIf="avatar.touched && avatar.invalid">
@@ -51,11 +54,11 @@
           <div class="form-group">
             <label for="description">Description</label>
             <textarea
-              maxlength="20"
+             
               class="form-control form-control-lg"
               formControlName="description"
               rows="5"
-              maxlength="250"
+         
               placeholder="Enter description"
               id="description"
               required

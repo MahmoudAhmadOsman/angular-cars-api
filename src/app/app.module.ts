@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,6 +15,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { FooterComponent } from './components/footer/footer.component';
     DetailsComponent,
     HomeComponent,
     UpdateComponent,
-    FooterComponent
+    FooterComponent,
+    DescShortnerPipe
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,9 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     ToastNoAnimationModule.forRoot(),//Toast notification
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', // set defaults here
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
