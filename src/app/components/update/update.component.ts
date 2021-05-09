@@ -1,10 +1,12 @@
 import { ProductService } from './../../services/product.service';
+import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Product } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
- 
+
 import { ActivatedRoute, Router } from '@angular/router';
- 
+import { error } from '@angular/compiler/src/util';
+
 
 @Component({
   selector: 'app-update',
@@ -15,10 +17,18 @@ export class UpdateComponent implements OnInit {
 
   public title: string = "Update Record";
   public productDetails: any;
+
+
+   id: number;
+  // product: Product = new Product();
+
   //Add this in the update.component.html file
   updateProductForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService, private route: ActivatedRoute,) {
+  constructor(private fb: FormBuilder, private router: Router,
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService) {
 
     let formControls = {
       name: new FormControl("", [
@@ -68,14 +78,14 @@ export class UpdateComponent implements OnInit {
 
 
 
-//Edit - Display values in edit form
+  //Edit Product- Display values in edit form
   ngOnInit(): void {
     let id = this.route.snapshot.params.id;
-    console.log(this.route.snapshot.params.id)
+    // console.log(this.route.snapshot.params.id)
 
     this.productService.getProductById(id).subscribe((data) => {
       let product = data;
-      console.log(product);
+      // console.log(product);
       this.updateProductForm.patchValue({
         name: product.name,
         // avatar: product.avatar,
@@ -83,25 +93,47 @@ export class UpdateComponent implements OnInit {
         price: product.price,
         quantity: product.quantity
 
-  
+
       })
-  
+
     }, (err) => {
       console.log("Unable to display product", err)
-})
+    })
 
- 
-  
+
+
+
+
   }
 
- 
+
+
+
+
+
+  //New
+  updateProduct() {
+    
+     let id = this.route.snapshot.params['id'];
+    this.productService.updateProduct(id).subscribe(data => {
+       console.log("component ts file", id)
+      this.router.navigate(["/"]);
+
+    },
+      (error => {
+        console.log("Unable to updating product! ", error);
+        this.toastr.error("Sorry, Unable to update this product");
+      })
+
+    );
+
+  }
 
 
 
 
 
 
- 
 
 
 }

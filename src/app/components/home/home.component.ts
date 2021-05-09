@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
     confirm("Are you sure, you want to delete this record?");
     this.productService.deleteProduct(id).subscribe((data) => {
      
-      this.toastr.error('Record is deleted!');
+      this.toastr.error('Record has been deleted!');
        this.router.navigate(['/'])
     
     }, (err) => {

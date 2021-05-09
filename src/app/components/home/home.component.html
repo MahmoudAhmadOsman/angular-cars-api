@@ -73,8 +73,9 @@
                   <td>
                     <!-- (click)="UpdateProduct(product.id)" -->
                     <!-- [routerLink]="['/update', product.id]" -->
+                    <!-- routerLink="/update/{{product.id}}" -->
                     <a
-                      routerLink="/update/{{product.id}}"
+                      [routerLink]="['/update', product.id, product.name]"
                       class="btn btn-outline-info btn-sm"
                       title="Edit"
                     >

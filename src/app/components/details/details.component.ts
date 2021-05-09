@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
@@ -10,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class DetailsComponent implements OnInit {
 
   public productDetails: any;
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.showProductDetails();
@@ -23,6 +24,7 @@ export class DetailsComponent implements OnInit {
       this.productDetails = data;
     }, (err) => {
       console.log("Product Details error: ", err);
+      this.toastr.error(err.message)
     })
     
   }

@@ -81,7 +81,7 @@ export class CreateComponent implements OnInit {
     this.productService.createNewProduct(this.productForm.value).subscribe((data) => {
       console.log(data);
 
-      this.toastr.success('Created Successfully!');
+      this.toastr.success('New Record has been created!');
       this.router.navigate(['/'])
       
     }, (error) => {

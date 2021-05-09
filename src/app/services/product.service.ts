@@ -9,13 +9,11 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-  // updateUser(user: Product) {
-  //   throw new Error('Method not implemented.');
-  // }
 
   // private baseUrl = "http://localhost:5000";
   // https://custom-states-api.herokuapp.com
-  private baseUrl = "https://custom-states-api.herokuapp.com";
+  baseUrl = "https://custom-states-api.herokuapp.com";
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -35,15 +33,15 @@ export class ProductService {
   }
 
   //Create new product
-  createNewProduct(product): Observable<Product> {
-    return this.httpClient.post<Product>(this.baseUrl + '/cars/', JSON.stringify(product), this.httpOptions)
+  createNewProduct(id: number): Observable<Product> {
+    return this.httpClient.post<Product>(this.baseUrl + '/cars/', JSON.stringify(id), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
 
   }
 
-  //Last -best
+  //Edit product
   getProductById(id: number): Observable<Product> {
     return this.httpClient.get<Product>(this.baseUrl + '/cars/' + id)
       .pipe(
@@ -53,12 +51,28 @@ export class ProductService {
 
 
   //Update Product
-  updateProduct(id, product): Observable<Product> {
-    return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(product), this.httpOptions)
+  // updateProduct(id: number): Observable<Product> {
+  //   return this.httpClient.put<Product>(this.baseUrl + '/cars/' + id, JSON.stringify(id), this.httpOptions)
+  //     .pipe(
+  //       catchError(this.errorHandler)
+  //     )
+  // }
+
+
+  //Update Product ----new
+  updateProduct(id: number) {
+    // return this.httpClient.put<Product>(this.baseUrl, + '/cars/' + id, product, )
+    return this.httpClient.put(this.baseUrl + '/cars/' + id, JSON.stringify(id), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
+
   }
+
+  // this.baseUrl + '/cars/', JSON.stringify(id), this.httpOptions
+
+
+
 
 
   //Delete Product
