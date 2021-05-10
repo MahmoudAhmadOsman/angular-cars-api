@@ -1,3 +1,4 @@
+import { FilterPipe } from './pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
@@ -16,7 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
+
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
  
 

@@ -19,14 +19,15 @@ export class HomeComponent implements OnInit {
   confirmClicked = false;
   cancelClicked = false;
 
-  public title: string ="Vehicle Inventory";
+  public title: string = "Vehicle Inventory";
   //Search term
   filteredString: any = '';
 
-   products: Product[];
- 
 
- 
+  products: Product[];
+
+
+
   //Display loading spinner
   public loading = true;
 
@@ -62,8 +63,8 @@ export class HomeComponent implements OnInit {
 
   //Delete method
   deleteProduct(id: number) {
-  // confirm("Are you sure, you want to delete this record?");
- 
+    // confirm("Are you sure, you want to delete this record?");
+
     this.productService.deleteProduct(id).subscribe((data) => {
 
       this.toastr.error('Record has been deleted!');
@@ -77,7 +78,7 @@ export class HomeComponent implements OnInit {
 
   }
 
- 
+
 
 
 
