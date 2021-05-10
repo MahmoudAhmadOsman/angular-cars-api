@@ -24,7 +24,7 @@
       <div class="row" *ngFor="let product of products | searchFilter: searchName; let i = index;">
         <div class="col-md-4">
           <div class="card">
-            <img src="{{product.avatar}}" onerror="this.src='assets/images/has-no-image.png';" alt="{{product.avatar}}" />
+            <img class="img-fluid" src="{{product.avatar}}" onerror="this.src='assets/images/has-no-image.png';" alt="{{product.avatar}}" />
           </div>
         </div>
         <div class="col-md-8 mb-3">
