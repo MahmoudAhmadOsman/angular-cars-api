@@ -7,7 +7,8 @@
       <div class="col-md-12">
         <img class="img-fluid" src="{{productDetails.avatar}}" onerror="this.src='assets/images/has-no-image.png';" alt="{{productDetails.name}}" />
         <h1><span class="text-danger">{{productDetails.name}}</span></h1>
-        <table class="table">
+        <div class="table-responsive">
+           <table class="table">
           <thead>
             <tr>
               <th>
@@ -47,6 +48,8 @@
             </tr>
           </tbody>
         </table>
+        </div>
+       
         <div class="desc">
           <h3>Details</h3>
           <p class="text-muted">{{productDetails.description}}</p>
