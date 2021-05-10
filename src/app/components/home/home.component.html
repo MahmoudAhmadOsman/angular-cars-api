@@ -48,7 +48,8 @@
               <a [routerLink]="['/update', product.id, product.name]" class="btn btn-outline-info btn-sm" title="Edit">
                 <i class="fa fa-pencil"></i>
               </a>
-              <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="left" (confirm)="deleteProduct(product.id)" (cancel)="cancelClicked = true">
+              <!-- Disable the deleteProduct function by adding id s letter -->
+              <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="left" (confirm)="deleteProduct(product.ids)" (cancel)="cancelClicked = true">
                 <i class="fa fa-trash"></i>
               </button>
             </div>
