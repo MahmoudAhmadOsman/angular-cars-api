@@ -16,6 +16,9 @@ import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+ 
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
     HomeComponent,
     UpdateComponent,
     FooterComponent,
-    DescShortnerPipe
+    DescShortnerPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,8 @@ import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    FormsModule,
     ToastNoAnimationModule.forRoot(),//Toast notification
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here

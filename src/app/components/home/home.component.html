@@ -9,7 +9,7 @@
     <!-- End of loading -->
 
     <ng-template #loaded>
-      <h1 class="text-danger text-uppercase mt-3">List of Cars</h1>
+      <h1 class="text-info mt-3">{{title}}</h1>
       <small class="text-muted" style="float: right; margin-top: -42px;"
         >Built with Angular</small
       >
@@ -23,11 +23,13 @@
       <div class="form-group">
         <input
           type="text"
+         [(ngModel)]="filteredString"
           class="form-control form-control-lg"
-          placeholder="Search..."
-          id="search"
+          placeholder="Search vehicles..."
+          
         />
         <br />
+  
       </div>
 
       <div class="row">
@@ -49,7 +51,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let product of products; let i = index;">
+                <tr *ngFor="let product of products | filter:filteredString; let i = index;">
                   <td>{{i + 1}}</td>
                   <td>{{product.name | titlecase}}</td>
 

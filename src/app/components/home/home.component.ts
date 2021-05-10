@@ -13,21 +13,27 @@ import { Product } from './../../models/product';
 })
 export class HomeComponent implements OnInit {
 
-  popoverTitle = 'DELETE THIS RECORD';
+  //Confirm record deletion popup
+  popoverTitle = 'DELETING THIS RECORD?';
   popoverMessage = 'Are you sure you want to delete this record?';
   confirmClicked = false;
   cancelClicked = false;
 
+  public title: string ="Vehicle Inventory";
+  //Search term
+  filteredString: any = '';
 
+   products: Product[];
+ 
 
-  products: Product[];
-
+ 
+  //Display loading spinner
   public loading = true;
 
   constructor(private productService: ProductService, private router: Router, private toastr: ToastrService) {
 
     productService.getAll().subscribe((data) => {
-      console.log("Products list", data);
+      // console.log("Products list", data);
 
       this.products = data;
       this.loading = false;
