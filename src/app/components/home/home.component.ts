@@ -20,13 +20,10 @@ export class HomeComponent implements OnInit {
   cancelClicked = false;
 
   public title: string = "Vehicle Inventory";
-  //Search term
-  filteredString: any = '';
 
+  searchName: string = '';
 
   products: Product[];
-
-
 
   //Display loading spinner
   public loading = true;
@@ -34,7 +31,7 @@ export class HomeComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router, private toastr: ToastrService) {
 
     productService.getAll().subscribe((data) => {
-      // console.log("Products list", data);
+      console.log("Products list", data);
 
       this.products = data;
       this.loading = false;
@@ -56,10 +53,6 @@ export class HomeComponent implements OnInit {
   UpdateProduct(id: number) {
     this.router.navigate(['/update', id]);
   }
-
-
-
-
 
   //Delete method
   deleteProduct(id: number) {

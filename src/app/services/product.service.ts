@@ -12,7 +12,7 @@ export class ProductService {
 
   // private baseUrl = "http://localhost:5000";
   // https://custom-states-api.herokuapp.com
-  private baseUrl = " https://custom-states-api.herokuapp.com";
+  private baseUrl = "https://custom-states-api.herokuapp.com";
 
 
   httpOptions = {
@@ -64,17 +64,7 @@ export class ProductService {
     // return this.httpClient.put<Product>(this.baseUrl, + '/cars/' + id )
     return this.httpClient.put(this.baseUrl + '/cars/', product)
 
-
   }
-
-
-
-
-
-  // updateProduct(id:number, product): Observable<any> {
-  //   return this.httpClient.put(`${this.baseUrl}/${id}`, product);
-  // }
-
 
 
   //Delete Product

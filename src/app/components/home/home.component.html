@@ -7,33 +7,55 @@
       </div>
     </div>
     <!-- End of loading -->
-
     <ng-template #loaded>
       <h1 class="text-info mt-3">{{title}}</h1>
-      <small class="text-muted" style="float: right; margin-top: -42px;"
-        >Built with Angular</small
-      >
+      <small class="text-muted" style="float: right; margin-top: -42px;">Angular</small>
       <hr />
       <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
         <i class="fa fa-pencil"></i>
       </a>
-
       <!-- Search Bar -->
-
       <div class="form-group">
-        <input
-          type="text"
-         [(ngModel)]="filteredString"
-        
-          class="form-control form-control-lg"
-          placeholder="Search vehicles..."
-          
-        />
+        <input type="text" [(ngModel)]="searchName" autofocus id="search" class="form-control form-control-lg" placeholder="Search vehicles..." />
+        <!-- {{searchName}} -->
         <br />
- 
       </div>
-
-      <div class="row">
+      <!-- Row 1 test -->
+      <div class="row" *ngFor="let product of products | searchFilter: searchName; let i = index;">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{product.avatar}}" onerror="this.src='assets/images/has-no-image.png';" alt="{{product.avatar}}" />
+          </div>
+        </div>
+        <div class="col-md-8 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <a [routerLink]="['/details', product.id, product.name]">
+              <h2 class="card-title text-info">
+                {{product.name | titlecase}}
+              </h2></a>
+              <hr>
+              <p><b>Model: </b> {{product.model}}</p>
+              <p><b>Make: </b> {{product.make}}</p>
+              <p><b>Year: </b> {{product.year}}</p>
+              <p><b>Mileage: </b> {{product.mileage}}</p>
+              <p><b>Value Price: </b><span class="text-danger">{{product.price | currency}}</span></p>
+              <p><b>Stock #:</b> {{product.quantity}}</p>
+              <p class="card-text">{{product.description | descShortner:50}}...</p>
+              <a [routerLink]="['/details', product.id, product.name]" class="btn btn-outline-info btn-sm mr-2" title="View">
+                <i class="fa fa-eye"></i>
+              </a>
+              <a [routerLink]="['/update', product.id, product.name]" class="btn btn-outline-info btn-sm" title="Edit">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="left" (confirm)="deleteProduct(product.id)" (cancel)="cancelClicked = true">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="display: none;">
         <div class="col-md-12">
           <div class="table-responsive">
             <table class="table">
@@ -48,62 +70,37 @@
                   <th>View</th>
                   <th>Edit</th>
                   <th>Delete</th>
-
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let product of products | filter:filteredString; let i = index;">
+                <tr *ngFor="let product of products | searchFilter: searchName; let i = index;">
                   <td>{{i + 1}}</td>
                   <td>{{product.name | titlecase}}</td>
-
                   <td>
-                    <img
-                      src="{{product.avatar}}"
-                      onerror="this.src='assets/images/has-no-image.png';"
-                      alt="{{product.avatar}}"
-                    />
+                    <img src="{{product.avatar}}" onerror="this.src='assets/images/has-no-image.png';" alt="{{product.avatar}}" />
                   </td>
                   <td>{{product.description | descShortner:20}}...</td>
                   <td>{{product.price | currency}}</td>
                   <td>{{product.quantity}}</td>
                   <td>
-                    <a
-                      [routerLink]="['/details', product.id, product.name]"
-                      class="btn btn-outline-info btn-sm"
-                      title="View"
-                    >
+                    <a [routerLink]="['/details', product.id, product.name]" class="btn btn-outline-info btn-sm" title="View">
                       <i class="fa fa-eye"></i>
                     </a>
                   </td>
-
                   <td>
                     <!-- (click)="UpdateProduct(product.id)" -->
                     <!-- [routerLink]="['/update', product.id]" -->
                     <!-- routerLink="/update/{{product.id}}" -->
-                    <a
-                      [routerLink]="['/update', product.id, product.name]"
-                      class="btn btn-outline-info btn-sm"
-                      title="Edit"
-                    >
+                    <a [routerLink]="['/update', product.id, product.name]" class="btn btn-outline-info btn-sm" title="Edit">
                       <i class="fa fa-pencil"></i>
                     </a>
                   </td>
-
                   <td>
                     <!--  (click)="deleteProduct(product.id)" -->
-                    <button
-                      type="button"
-                      class="btn btn-outline-danger btn-sm"
-                      
-                       
-                      title="Delete"
-                      mwlConfirmationPopover
-                      [popoverTitle]="popoverTitle"
-                      [popoverMessage]="popoverMessage"
-                      placement="left"
-                      (confirm)="deleteProduct(product.id)"
-                      (cancel)="cancelClicked = true"
-                    >
+                    <button type="button" class="btn btn-outline-danger btn-sm" 
+                    title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                     [popoverMessage]="popoverMessage" placement="left" 
+                     (confirm)="deleteProduct(product.id)" (cancel)="cancelClicked = true">
                       <i class="fa fa-trash"></i>
                     </button>
                   </td>
