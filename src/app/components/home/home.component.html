@@ -9,11 +9,20 @@
         <!-- End of loading -->
         <ng-template #loaded>
             <h1 class="text-info mt-3">{{title}}</h1>
-            <small class="text-muted" style="float: right; margin-top: -42px;">Angular</small>
+            <small class="text-muted" style="float: right; margin-top: -42px;">Angular Product</small>
             <hr />
-            <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
+            <!-- <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
+                <i class="fa fa-pencil"></i>
+            </a> -->
+
+            <a class="btn btn-outline-info btn-sm mb-3" data-toggle="modal" data-target="#createModal">
                 <i class="fa fa-pencil"></i>
             </a>
+            <app-create></app-create>
+
+
+
+
             <!-- Search Bar -->
             <div class="form-group">
                 <input type="text" [(ngModel)]="searchName" autofocus id="search" class="form-control form-control-lg" placeholder="Search vehicles..." />
@@ -52,6 +61,8 @@
                             <a [routerLink]="['/update', product.id, product.name]" class="btn btn-outline-info btn-sm" title="Edit">
                                 <i class="fa fa-pencil"></i>
                             </a>
+
+
                             <!-- Disable the deleteProduct function by adding id s letter -->
                             <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="center" (confirm)="deleteProduct(product.ids)" (cancel)="cancelClicked = true">
                 <i class="fa fa-trash"></i>

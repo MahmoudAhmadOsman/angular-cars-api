@@ -3,8 +3,8 @@ import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-import { FormBuilder, FormGroup, FormControl, Validators   } from '@angular/forms';
- 
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -14,11 +14,8 @@ import { FormBuilder, FormGroup, FormControl, Validators   } from '@angular/form
 })
 export class CreateComponent implements OnInit {
 
+  public createTitle: string = "Add New Vehicle";
 
-  //Show Success alert on deleted record
-  // showSuccessdAlert: boolean = false;
-
-  
   //Add this in the create.component.html file
   productForm: FormGroup;
 
@@ -32,8 +29,22 @@ export class CreateComponent implements OnInit {
       ]),
       avatar: new FormControl("", [
         Validators.required,
-       
+
       ]),
+      model: new FormControl("", [
+        Validators.required,
+
+      ]), make: new FormControl("", [
+        Validators.required,
+
+      ]), year: new FormControl("", [
+        Validators.required,
+
+      ]), mileage: new FormControl("", [
+        Validators.required,
+
+      ]),
+
       description: new FormControl("", [
         Validators.required,
 
@@ -52,12 +63,24 @@ export class CreateComponent implements OnInit {
     this.productForm = this.fb.group(formControls);
 
   }
-  
+
   get name() {
     return this.productForm.get("name");
   }
   get avatar() {
     return this.productForm.get("avatar");
+  }
+  get model() {
+    return this.productForm.get("model");
+  }
+  get make() {
+    return this.productForm.get("make");
+  }
+  get year() {
+    return this.productForm.get("year");
+  }
+  get mileage() {
+    return this.productForm.get("mileage");
   }
   get description() {
     return this.productForm.get("description");
@@ -71,10 +94,10 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+
   }
 
- 
+
   //On form submit
   submitForm() {
 
@@ -83,7 +106,7 @@ export class CreateComponent implements OnInit {
 
       this.toastr.success('New Record has been created!');
       this.router.navigate(['/'])
-      
+
     }, (error) => {
       console.log('status code -> ' + error.status);
 
@@ -92,6 +115,6 @@ export class CreateComponent implements OnInit {
 
   }
 
- 
+
 
 }

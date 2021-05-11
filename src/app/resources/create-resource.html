@@ -1,16 +1,16 @@
-<section class="product_update">
+<section class="create-product">
     <div class="container">
-        <h1 class="text-danger mt-3">{{title}}</h1>
+        <h1 class="text-danger mt-3">Add New Car</h1>
         <hr />
         <div class="row">
             <div class="col-md-12">
-                <form [formGroup]="updateProductForm" (ngSubmit)="updateProduct()">
+                <form [formGroup]="productForm" (ngSubmit)="submitForm()">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" formControlName="name" id="name" class="form-control form-control-lg" placeholder="Enter product name" required />
                         <!-- Name-->
                         <div *ngIf="name.touched && name.invalid">
-                            <span *ngIf="name.errors.required" class="text-danger">Product Name is required!<br /></span>
+                            <span *ngIf="name.errors.required" class="text-danger">Product name is required!<br /></span>
                             <span *ngIf="name.errors.minlength" class="text-danger">Name must contain at least 2 or more characters!<br /></span>
                         </div>
                     </div>
@@ -53,14 +53,15 @@
                     <!-- Image -->
                     <div class="form-group">
                         <label for="avatar">Avatar</label>
-                        <input type="file" formControlName="avatar" class="form-control" id="avatar" name="avatar" required />
-                    </div>
-                    <div *ngIf="avatar.touched && avatar.invalid">
-                        <span *ngIf="avatar.errors.required" class="text-danger">Product image is required!<br /></span>
+                        <input type="file" formControlName="avatar" class="form-control" id="avatar" required />
+                        <!-- avatar -->
+                        <div *ngIf="avatar.touched && avatar.invalid">
+                            <span *ngIf="avatar.errors.required" class="text-danger">Product avatar is required!<br /></span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea class="form-control form-control-lg" formControlName="description" rows="5" placeholder="Enter description" id="description" required></textarea>
+                        <textarea maxlength="20" class="form-control form-control-lg" formControlName="description" rows="5" maxlength="250" placeholder="Enter description" id="description" required></textarea>
                         <!-- description -->
                         <div *ngIf="description.touched && description.invalid">
                             <span *ngIf="description.errors.required" class="text-danger">Product description is required!<br /></span>
@@ -68,7 +69,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="text" formControlName="price" class="form-control form-control-lg" placeholder="Enter price tag" id="price" required />
+                        <input type="number" formControlName="price" class="form-control form-control-lg" placeholder="Enter price tag" id="price" required />
                         <!-- Price -->
                         <div *ngIf="price.touched && price.invalid">
                             <span *ngIf="price.errors.required" class="text-danger">Product price is required!<br /></span>
@@ -76,14 +77,14 @@
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" formControlName="quantity" class="form-control form-control-lg" placeholder="Enter quantity number" id="quantity" required />
+                        <input type="number" formControlName="quantity" class="form-control form-control-lg" placeholder="Enter quantity number" id="quantity" required />
                         <!-- Quantity -->
                         <div *ngIf="quantity.touched && quantity.invalid">
                             <span *ngIf="quantity.errors.required" class="text-danger">Product quantity is required!<br /></span>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-info text-uppercase mt-3" [disabled]="updateProductForm.invalid">
-            Update
+                    <button type="submit" class="btn btn-info text-uppercase mt-3" [disabled]="productForm.invalid">
+            Submit
           </button>
                 </form>
             </div>

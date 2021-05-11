@@ -1,107 +1,105 @@
 <section class="create-product">
   <div class="container">
-    <h1 class="text-danger mt-3">Add New Car</h1>
-    <hr />
- 
-
     <div class="row">
       <div class="col-md-12">
-        <form [formGroup]="productForm" (ngSubmit)="submitForm()">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              formControlName="name"
-              id="name"
-              class="form-control form-control-lg"
-              placeholder="Enter product name"
-              required
-            />
-
-            <!-- Name-->
-            <div *ngIf="name.touched && name.invalid">
-              <span *ngIf="name.errors.required" class="text-danger"
-                >Product name is required!<br
-              /></span>
-              <span *ngIf="name.errors.minlength" class="text-danger"
-                >Name must contain at least 2 or more characters!<br
-              /></span>
+        <!-- The Modal -->
+        <div class="modal" id="createModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h3 class="modal-title text-danger">{{createTitle}}</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name" id="name" class="form-control form-control-lg" placeholder="Enter product name" required />
+                    <!-- Name-->
+                    <div *ngIf="name.touched && name.invalid">
+                      <span *ngIf="name.errors.required" class="text-danger">Product name is required!<br /></span>
+                      <span *ngIf="name.errors.minlength" class="text-danger">Name must contain at least 2 or more characters!<br /></span>
+                    </div>
+                  </div>
+                  <!-- Model -->
+                  <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" formControlName="model" id="model" class="form-control form-control-lg" placeholder="Enter model name" required />
+                    <!-- Model-->
+                    <div *ngIf="model.touched && model.invalid">
+                      <span *ngIf="model.errors.required" class="text-danger">Product model is required!<br /></span>
+                    </div>
+                  </div>
+                  <!-- Make -->
+                  <div class="form-group">
+                    <label for="make">Make</label>
+                    <input type="text" formControlName="make" id="make" class="form-control form-control-lg" placeholder="Enter make name" required />
+                    <!-- make-->
+                    <div *ngIf="make.touched && model.invalid">
+                      <span *ngIf="make.errors.required" class="text-danger">Product make is required!<br /></span>
+                    </div>
+                  </div>
+                  <!-- Year -->
+                  <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="text" formControlName="year" id="year" class="form-control form-control-lg" placeholder="Enter year" required />
+                    <!-- year-->
+                    <div *ngIf="year.touched && year.invalid">
+                      <span *ngIf="year.errors.required" class="text-danger">Product year is required!<br /></span>
+                    </div>
+                  </div>
+                  <!-- Mileage -->
+                  <div class="form-group">
+                    <label for="mileage">Mileage</label>
+                    <input type="number" formControlName="mileage" id="mileage" class="form-control form-control-lg" placeholder="Enter mileage" required />
+                    <!-- Mileage-->
+                    <div *ngIf="mileage.touched && mileage.invalid">
+                      <span *ngIf="mileage.errors.required" class="text-danger">Product mileage is required!<br /></span>
+                    </div>
+                  </div>
+                  <!-- Image -->
+                  <div class="form-group">
+                    <label for="avatar">Avatar</label>
+                    <input type="file" formControlName="avatar" class="form-control" id="avatar" required />
+                    <!-- avatar -->
+                    <div *ngIf="avatar.touched && avatar.invalid">
+                      <span *ngIf="avatar.errors.required" class="text-danger">Product avatar is required!<br /></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea maxlength="20" class="form-control form-control-lg" formControlName="description" rows="5" maxlength="250" placeholder="Enter description" id="description" required></textarea>
+                    <!-- description -->
+                    <div *ngIf="description.touched && description.invalid">
+                      <span *ngIf="description.errors.required" class="text-danger">Product description is required!<br /></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" formControlName="price" class="form-control form-control-lg" placeholder="Enter price tag" id="price" required />
+                    <!-- Price -->
+                    <div *ngIf="price.touched && price.invalid">
+                      <span *ngIf="price.errors.required" class="text-danger">Product price is required!<br /></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" formControlName="quantity" class="form-control form-control-lg" placeholder="Enter quantity number" id="quantity" required />
+                    <!-- Quantity -->
+                    <div *ngIf="quantity.touched && quantity.invalid">
+                      <span *ngIf="quantity.errors.required" class="text-danger">Product quantity is required!<br /></span>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-info text-uppercase mt-3" [disabled]="productForm.invalid">
+                    Submit
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-          <!-- Image -->
-
-          <div class="form-group">
-            <label for="avatar">Avatar</label>
-            <input
-              type="file"
-              formControlName="avatar"
-              class="form-control"
-              id="avatar"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              maxlength="20"
-              class="form-control form-control-lg"
-              formControlName="description"
-              rows="5"
-              maxlength="250"
-              placeholder="Enter description"
-              id="description"
-              required
-            ></textarea>
-            <!-- description -->
-            <div *ngIf="description.touched && description.invalid">
-              <span *ngIf="description.errors.required" class="text-danger"
-                >Product description is required!<br
-              /></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="price">Price</label>
-            <input
-              type="number"
-              formControlName="price"
-              class="form-control form-control-lg"
-              placeholder="Enter price tag"
-              id="price"
-              required
-            />
-            <!-- Price -->
-            <div *ngIf="price.touched && price.invalid">
-              <span *ngIf="price.errors.required" class="text-danger"
-                >Product price is required!<br
-              /></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="quantity">Quantity</label>
-            <input
-              type="number"
-              formControlName="quantity"
-              class="form-control form-control-lg"
-              placeholder="Enter quantity number"
-              id="quantity"
-              required
-            />
-            <!-- Quantity -->
-            <div *ngIf="quantity.touched && quantity.invalid">
-              <span *ngIf="quantity.errors.required" class="text-danger"
-                >Product  quantity is required!<br
-              /></span>
-            </div>
-          </div>
-          <button
-            type="submit"
-            class="btn btn-info text-uppercase mt-3"
-            [disabled]="productForm.invalid"
-          >
-            Submit
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   </div>

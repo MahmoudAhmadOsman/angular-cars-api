@@ -15,6 +15,8 @@ import { error } from '@angular/compiler/src/util';
 })
 export class UpdateComponent implements OnInit {
 
+
+
   public title: string = "Update Record";
   public productDetails: any;
 
@@ -31,6 +33,19 @@ export class UpdateComponent implements OnInit {
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
+      ]),
+      model: new FormControl("", [
+        Validators.required,
+
+      ]), make: new FormControl("", [
+        Validators.required,
+
+      ]), year: new FormControl("", [
+        Validators.required,
+
+      ]), mileage: new FormControl("", [
+        Validators.required,
+
       ]),
       avatar: new FormControl("", [
         Validators.required,
@@ -57,6 +72,18 @@ export class UpdateComponent implements OnInit {
   get name() {
     return this.updateProductForm.get("name");
   }
+  get model() {
+    return this.updateProductForm.get("model");
+  }
+  get make() {
+    return this.updateProductForm.get("make");
+  }
+  get year() {
+    return this.updateProductForm.get("year");
+  }
+  get mileage() {
+    return this.updateProductForm.get("mileage");
+  }
   get avatar() {
     return this.updateProductForm.get("avatar");
   }
@@ -81,10 +108,14 @@ export class UpdateComponent implements OnInit {
 
     this.productService.getProductById(id).subscribe((data) => {
       let product = data;
-       console.log(product);
+      console.log(product);
       this.updateProductForm.patchValue({
         name: product.name,
         // avatar: product.avatar,
+        model: product.model,
+        make: product.make,
+        year: product.year,
+        mileage: product.mileage,
         description: product.description,
         price: product.price,
         quantity: product.quantity
