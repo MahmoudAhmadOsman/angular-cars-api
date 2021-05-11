@@ -20,9 +20,6 @@
             </a>
             <app-create></app-create>
 
-
-
-
             <!-- Search Bar -->
             <div class="form-group">
                 <input type="text" [(ngModel)]="searchName" autofocus id="search" class="form-control form-control-lg" placeholder="Search vehicles..." />
@@ -43,15 +40,13 @@
                     <div class="card">
                         <div class="card-body">
                             <a [routerLink]="['/details', product.id, product.name]">
-                                <h2 class="card-title text-info">
-                                    {{product.name | titlecase}}
-                                </h2>
+                                <h2 class="card-title text-info">{{product.name | titlecase}}</h2>
                             </a>
                             <hr>
                             <p><b>Model: </b> {{product.model}}</p>
                             <p><b>Make: </b> {{product.make}}</p>
                             <p><b>Year: </b> {{product.year}}</p>
-                            <p><b>Mileage: </b> {{product.mileage}}</p>
+                            <p><b>Mileage: </b> {{product.mileage | number}}</p>
                             <p><b>Value Price: </b><span class="text-danger">{{product.price | currency}}</span></p>
                             <p><b>Stock #:</b> {{product.quantity}}</p>
                             <p class="card-text"><b>Details:</b> <br>{{product.description | descShortner:60}}...</p>
@@ -61,12 +56,10 @@
                             <a [routerLink]="['/update', product.id, product.name]" class="btn btn-outline-info btn-sm" title="Edit">
                                 <i class="fa fa-pencil"></i>
                             </a>
-
-
                             <!-- Disable the deleteProduct function by adding id s letter -->
                             <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="center" (confirm)="deleteProduct(product.ids)" (cancel)="cancelClicked = true">
-                <i class="fa fa-trash"></i>
-              </button>
+                                    <i class="fa fa-trash"></i>
+                                </button>
                         </div>
                     </div>
                 </div>
