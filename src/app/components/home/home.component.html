@@ -23,9 +23,12 @@
       <!-- Row 1 test -->
       <div class="row" *ngFor="let product of products | searchFilter: searchName; let i = index;">
         <div class="col-md-4">
+          <a [routerLink]="['/details', product.id, product.name]">
           <div class="card">
             <img class="img-fluid" src="{{product.avatar}}" onerror="this.src='assets/images/has-no-image.png';" alt="{{product.avatar}}" />
+                     <!-- <span class="badge badge-danger">{{i+1}}</span> -->
           </div>
+ </a>
         </div>
         <div class="col-md-8 mb-3">
           <div class="card">
@@ -49,7 +52,7 @@
                 <i class="fa fa-pencil"></i>
               </a>
               <!-- Disable the deleteProduct function by adding id s letter -->
-              <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="left" (confirm)="deleteProduct(product.ids)" (cancel)="cancelClicked = true">
+              <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="center" (confirm)="deleteProduct(product.id)" (cancel)="cancelClicked = true">
                 <i class="fa fa-trash"></i>
               </button>
             </div>
