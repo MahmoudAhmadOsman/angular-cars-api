@@ -17,6 +17,7 @@ import { UpdateComponent } from './components/update/update.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { CheckAvailabilityComponent } from './components/check-availability/check-availability.component';
  
 
 
@@ -33,6 +34,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     FooterComponent,
     DescShortnerPipe,
     SearchFilterPipe,
+    CheckAvailabilityComponent,
     
 
   ],
