@@ -61,8 +61,11 @@ export class HomeComponent implements OnInit {
     this.productService.deleteProduct(id).subscribe((data) => {
 
       this.toastr.error('Record has been deleted!');
-      // window.location.reload();
-      this.router.navigate(['/'])
+      setTimeout(() => {
+        window.location.href = "/";
+        // this.router.navigate(['/'])
+      }, 2000);
+
 
     }, (err) => {
       console.log("error occurred when deleting product", err.status);
