@@ -105,7 +105,12 @@ export class CreateComponent implements OnInit {
       console.log(data);
 
       this.toastr.success('New Record has been created!');
-      this.router.navigate(['/'])
+
+      setTimeout(() => {
+        window.location.href = "/";
+        // this.router.navigate(['/'])
+      }, 2000);
+
 
     }, (error) => {
       console.log('status code -> ' + error.status);
