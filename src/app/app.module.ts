@@ -20,6 +20,7 @@ import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
 import { CheckAvailabilityComponent } from './components/check-availability/check-availability.component';
 import { LoginComponent } from './components/login/login.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -39,6 +40,7 @@ import { SearchPipe } from './pipes/search.pipe';
     CheckAvailabilityComponent,
     LoginComponent,
     SearchPipe,
+    RegisterComponent,
 
 
   ],

@@ -5,12 +5,12 @@
                 <img class="img-fluid" src="assets/images/lock.svg" alt="padlock">
             </div>
             <div class="col-md-8">
-                <h1 class="text-info">Login</h1>
+                <h1 class="text-info">{{logingTitles}}</h1>
                 <hr>
                 <form #validateForm="ngForm" action="#" method="POST">
                     <div class="form-group">
-                        <label for="email"><b>Username</b></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Enter your name" required />
+                        <label for="email"><b>Emaill Address</b></label>
+                        <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Enter your email address" required />
                     </div>
                     <div class="form-group">
                         <label for="password"><b>Password</b></label>
@@ -18,6 +18,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info text-uppercase btn-lg" [disabled]="!validateForm.valid">Login</button>
+                        <span class="text-primary ml-3"><a href="/register">Don't have an account yet?</a></span>
                     </div>
                 </form>
             </div>

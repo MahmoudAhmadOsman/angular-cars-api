@@ -1,0 +1,33 @@
+<section class="register">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 mx-auto">
+                <h1 class="text-info ">{{registerTitle}}</h1>
+                <hr>
+                <form #validateForm="ngForm" action="#" method="POST" (ngSubmit)="userRegister()">
+                    <div class="form-group">
+                        <label for="fullName"><b>Full Name</b></label>
+                        <input type="text" formControlName="fulllName " id="fulllName " class="form-control form-control-lg " placeholder="Enter your full name " required />
+                    </div>
+                    <div class="form-group ">
+                        <label for="email "><b>Email Address</b></label>
+                        <input type="email " formControlName="email" id=" email " class="form-control form-control-lg " placeholder="Enter your emaill as a username " required />
+                    </div>
+                    <div class="form-group ">
+                        <label for="password "><b>Password</b></label>
+                        <input type="password " formControlName="password" id="password " class="form-control form-control-lg " placeholder="Enter your password " required />
+                    </div>
+                    <div class="form-group ">
+                        <label for="confirmPassword "><b>Confirm Password</b></label>
+                        <input type="password " formControlName="confirmPassword " id="confirmPassword " class="form-control form-control-lg " placeholder="Confirm your password " required />
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit " class="btn btn-info text-uppercase btn-lg " [disabled]="!validateForm.valid ">Register</button>
+                        <span class="text-primary ml-3 "><a href="/login ">Already have an account?</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
