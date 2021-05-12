@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(value: any, ...args?: any): any {
-    console.log(args)
+  transform(value: any, ...args: any): any {
+
     if (!args) {
       return value;
     }
