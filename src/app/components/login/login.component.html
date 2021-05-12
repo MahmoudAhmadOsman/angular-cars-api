@@ -1,0 +1,23 @@
+<section class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mx-auto">
+                <h1 class="text-info">Login</h1>
+                <hr>
+                <form #validateForm="ngForm" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="email"><b>Username</b></label>
+                        <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Enter your name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg" [disabled]="!validateForm.valid">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
@@ -18,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { CheckAvailabilityComponent } from './components/check-availability/check-availability.component';
+import { LoginComponent } from './components/login/login.component';
  
 
 
@@ -35,6 +37,7 @@ import { CheckAvailabilityComponent } from './components/check-availability/chec
     DescShortnerPipe,
     SearchFilterPipe,
     CheckAvailabilityComponent,
+    LoginComponent,
     
 
   ],
@@ -51,7 +54,7 @@ import { CheckAvailabilityComponent } from './components/check-availability/chec
       confirmButtonType: 'danger', // set defaults here
     }),
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
