@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
 
     }, (err) => {
       console.log("error occurred when deleting product", err.status);
-      this.toastr.error("Sorry, unable to delete this record!");
+      this.toastr.error("Sorry, you're not authorized to delete this record!");
     })
 
   }
