@@ -10,8 +10,8 @@ export class SearchPipe implements PipeTransform {
     if (!args) {
       return value;
     }
-
     return value.filter((item) => item.name.toLowerCase().indexOf(args) > -1)
+
   }
 
 }
