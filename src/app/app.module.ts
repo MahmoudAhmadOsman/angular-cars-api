@@ -17,10 +17,10 @@ import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DescShortnerPipe } from './pipes/desc-shortner.pipe';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { CheckAvailabilityComponent } from './components/check-availability/check-availability.component';
 import { LoginComponent } from './components/login/login.component';
- 
+import { SearchPipe } from './pipes/search.pipe';
+
 
 
 
@@ -35,10 +35,11 @@ import { LoginComponent } from './components/login/login.component';
     UpdateComponent,
     FooterComponent,
     DescShortnerPipe,
-    SearchFilterPipe,
+
     CheckAvailabilityComponent,
     LoginComponent,
-    
+    SearchPipe,
+
 
   ],
   imports: [
@@ -48,7 +49,7 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
-    
+
     ToastNoAnimationModule.forRoot(),//Toast notification
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here

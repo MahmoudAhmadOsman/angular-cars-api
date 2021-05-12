@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
 
   public title: string = "Vehicle Inventory";
 
-  searchName: string = '';
+  //Search filter
+  search: any;
 
   products: Product[];
 

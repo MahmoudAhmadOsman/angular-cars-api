@@ -6,6 +6,7 @@
                 <i class="fa fa-spinner fa-spin fa-5x"></i>
             </div>
         </div>
+
         <!-- End of loading -->
         <ng-template #loaded>
             <h1 class="text-info mt-3">{{title}}</h1>
@@ -22,12 +23,13 @@
 
             <!-- Search Bar -->
             <div class="form-group">
-                <input type="text" [(ngModel)]="searchName" autofocus id="search" class="form-control form-control-lg" placeholder="Search vehicles..." />
-                <!-- {{searchName}} -->
+                <input type="text" [(ngModel)]="search" autofocus name="search" class="form-control form-control-lg" placeholder="Search vehicles..." />
+
+                <!-- {{search}} -->
                 <br />
             </div>
             <!-- Row 1 test -->
-            <div class="row" *ngFor="let product of products | searchFilter: searchName; let i = index;">
+            <div class="row" *ngFor="let product of products | search: search; let i = index;">
                 <div class="col-md-4">
                     <a [routerLink]="['/details', product.id, product.name]">
                         <div class="card">
