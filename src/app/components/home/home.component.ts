@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -23,22 +24,24 @@ export class HomeComponent implements OnInit {
 
   //Search filter
   search: any;
-
   products: Product[];
+
+
 
   //Display loading spinner
   public loading = true;
+  error: any;
 
   constructor(private productService: ProductService, private router: Router, private toastr: ToastrService) {
 
     productService.getAll().subscribe((data) => {
       console.log("Products list", data);
-
       this.products = data;
       this.loading = false;
 
     }, (error) => {
-      console.log("An error occurred: ", error)
+      console.log("Cannot get any data: ", error)
+      this.error = error.message;
       // this.toastr.error("An error occurred while fetching data", error.message);
       this.toastr.error("An error occurred while fetching data");
       this.loading = true;
@@ -69,10 +72,11 @@ export class HomeComponent implements OnInit {
       }, 2000);
 
 
-    }, (err) => {
-      console.log("error occurred when deleting product", err.status);
+    }, (error) => {
+      console.log("error occurred when deleting product", error.status);
+      // this.error = error.message;
       this.toastr.error("Sorry, you're not authorized to delete this record!");
-    })
+    });
 
   }
 

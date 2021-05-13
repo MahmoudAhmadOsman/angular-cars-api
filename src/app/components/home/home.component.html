@@ -1,5 +1,5 @@
 <section class="product_list">
-    <div class="container">
+    <div class="container" *ngIf="!error">
         <!-- Start of loading -->
         <div class="row" *ngIf="loading  else loaded">
             <div class="mx-auto mt-5">
@@ -67,4 +67,19 @@
             </div>
         </ng-template>
     </div>
+
+    <!--Start of Error alert -->
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-danger" *ngIf="error">
+                {{error}}
+
+            </div>
+        </div>
+    </div>
+    <!-- End of Error alert -->
+
+
+
+
 </section>

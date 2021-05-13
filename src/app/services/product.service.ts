@@ -2,8 +2,11 @@ import { Product } from './../models/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-
 import { catchError } from 'rxjs/operators';
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +28,7 @@ export class ProductService {
   //Get all Products from
   getAll(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.baseUrl + '/cars/')
+
       .pipe(
         catchError(this.errorHandler)
       )
