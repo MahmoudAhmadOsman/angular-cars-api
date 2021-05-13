@@ -12,9 +12,6 @@
             <h1 class="text-info mt-3">{{title}}</h1>
             <small class="text-muted text-xs-center d-none d-sm-block" style="float: right; margin-top: -42px;">Built with Angular</small>
             <hr />
-            <!-- <a routerLink="/create" class="btn btn-outline-info btn-sm mb-3">
-                <i class="fa fa-pencil"></i>
-            </a> -->
 
             <a class="btn btn-outline-info btn-sm mb-3" data-toggle="modal" data-target="#createModal" title="Create New Record">
                 <i class="fa fa-pencil"></i>
@@ -25,11 +22,13 @@
             <div class="form-group">
                 <input type="text" [(ngModel)]="search" autofocus id="search" name="search" class="form-control form-control-lg text-lowercase" placeholder="Search vehicles..." />
 
+
                 <!-- {{search}} -->
                 <br />
             </div>
             <!-- Row 1 test -->
             <div class="row" *ngFor="let product of products | search: search; let i = index;">
+
                 <div class="col-md-4">
                     <a [routerLink]="['/details', product.id, product.name]">
                         <div class="card">
