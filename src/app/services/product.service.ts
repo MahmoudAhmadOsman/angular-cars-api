@@ -13,8 +13,6 @@ export class ProductService {
   // private baseUrl = "http://localhost:5000";
   // https://custom-states-api.herokuapp.com
   private baseUrl = "https://custom-states-api.herokuapp.com";
-
-
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -27,9 +25,9 @@ export class ProductService {
   //Get all Products from
   getAll(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.baseUrl + '/cars/')
-    // .pipe(
-    //   catchError(this.errorHandler)
-    // )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   //Create new product
