@@ -124,6 +124,7 @@ export class UpdateComponent implements OnInit {
       })
 
     }, (err) => {
+      this.toastr.error("Unable to display this product");
       console.log("Unable to display product", err)
     })
 

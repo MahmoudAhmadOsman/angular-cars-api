@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     if (this.authoService.isUserLoggedIn()) {
       return true
     } else {
-      alert("Sorry, this route is not authorized!");
+      alert("BOBMER!, unauthorized route!");
       //this.router.navigateByUrl('login');
       window.location.href = "/login"
 

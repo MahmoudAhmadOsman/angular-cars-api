@@ -10,3 +10,18 @@
         margin-bottom: 40px;
     }
 }
+
+@media(max-width:768px) {
+    .login {
+        position: relative;
+        padding: 25px;
+        img {
+            width: 180px;
+            height: 180px;
+            display: block;
+            margin: auto;
+            background: none;
+            object-fit: cover;
+        }
+    }
+}
