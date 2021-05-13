@@ -39,7 +39,8 @@ export class HomeComponent implements OnInit {
 
     }, (error) => {
       console.log("An error occurred: ", error)
-      this.toastr.error('An error occurred while fetching data:');
+      // this.toastr.error("An error occurred while fetching data", error.message);
+      this.toastr.error("An error occurred while fetching data");
       this.loading = true;
     })
 
