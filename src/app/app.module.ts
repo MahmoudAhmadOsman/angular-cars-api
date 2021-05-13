@@ -21,6 +21,7 @@ import { CheckAvailabilityComponent } from './components/check-availability/chec
 import { LoginComponent } from './components/login/login.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { RegisterComponent } from './components/register/register.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -41,6 +42,7 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     SearchPipe,
     RegisterComponent,
+    LoadingComponent,
 
 
   ],
