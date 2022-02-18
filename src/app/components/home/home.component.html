@@ -10,7 +10,7 @@
         <!-- End of loading -->
         <ng-template #loaded>
             <h1 class="text-info mt-3">{{title}}</h1>
-            <small class="text-muted text-xs-center d-none d-sm-block" style="float: right; margin-top: -42px;">Built with Angular</small>
+            <small class="text-muted text-xs-center d-none d-sm-block" style="float: right; margin-top: -42px;">Built with <a href="https://angular.io/" target="_blank">Angular</a></small>
             <hr />
 
             <a class="btn btn-outline-info btn-sm mb-3" data-toggle="modal" data-target="#createModal" title="Create New Record">
@@ -38,7 +38,56 @@
                     </a>
                 </div>
                 <div class="col-md-8 mb-3">
-                    <div class="card">
+
+<!--Start of new card  -->
+ <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+           <h2 class="card-title text-info">{{product.name | titlecase}}</h2>
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+        <div class="card-body">
+               <a [routerLink]="['/details', product.id, product.name]">
+                            
+                            </a>
+                            <hr>
+                            <p><b>Model: </b> {{product.model}}</p>
+                            <p><b>Make: </b> {{product.make}}</p>
+                            <p><b>Year: </b> {{product.year}}</p>
+                            <p><b>Mileage: </b> {{product.mileage | number}}</p>
+                            <p><b>Value Price: </b><span class="text-danger">{{product.price | currency}}</span></p>
+                            <p><b>Stock #:</b> {{product.quantity}}</p>
+                            <p class="card-text"><b>Details:</b> <br>{{product.description | descShortner:60}}...</p>
+                            <a [routerLink]="['/details', product.id, product.name]" class="btn btn-outline-info btn-sm mr-2" title="View">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <a [routerLink]="['/update', product.id, product.name]" class="btn btn-outline-info btn-sm" title="Edit">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <!-- Disable the deleteProduct function by adding id s letter -->
+                            <button type="button" class="btn btn-outline-danger btn-sm ml-2" title="Delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="center" (confirm)="deleteProduct(product.ids)" (cancel)="cancelClicked = true">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+<!--End of new card  -->
+
+
+
+
+
+
+
+
+
+
+                    <div class="card" style="display:none">
                         <div class="card-body">
                             <a [routerLink]="['/details', product.id, product.name]">
                                 <h2 class="card-title text-info">{{product.name | titlecase}}</h2>
