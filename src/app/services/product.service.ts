@@ -15,7 +15,7 @@ export class ProductService {
 
   // private baseUrl = "http://localhost:5000";
   // https://custom-states-api.herokuapp.com
-  private baseUrl = "https://custom-states-api.herokuapp.com";
+  private baseUrl = "https://stapes-api.onrender.com";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
